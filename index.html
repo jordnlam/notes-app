@@ -24,7 +24,40 @@
                 const contentInput = document.getElementById('noteContent');
                 const saveButton = document.getElementById('saveButton');
                 const notesList = document.getElementById('notesList');
+                
+                // Listen for clicks on the save button
+                saveButton.addEventListener('click', function() {
+                        // Get the values from the inputs
+                        const title = titleInput.value;
+                        const content = contentInput.value;
 
+                        // Validate
+                        if (title === '' || content === '') {
+                                alert('Please fill in both title and content!');
+                                return;
+                        }
+
+                        // Create a note object
+                        const note = {
+                                id: crypto.randomUUID(),
+                                title: title,
+                                content: content,
+                                createdAt: new Date().toISOString()
+                        };
+
+                        // Add to our notes array
+                        notes.push(note);
+
+                        // Log to see if it works
+                        console.log('Saved note:', note);
+                        console.log('All notes:', notes);
+
+                        // Clear the inputs
+                        titleInput.value = '';
+                        contentInput.value = '';
+                });
+
+                
         </script>
 </body>
 </html>
