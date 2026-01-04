@@ -78,6 +78,19 @@
                         contentInput.value = '';
                 });
 
+                // Save notes to localStorage
+                function saveToLocalStorage() {
+                        localStorage.setItem('notes', JSON.stringify(notes));
+                }
+
+                // Load notes from localStorage
+                function loadFromLocalStorage() {
+                        const savedNotes = localStorage.getItem('notes');
+                        if (savedNotes) {
+                                notes = JSON.parse(savedNotes);
+                        }
+                }
+
         </script>
 </body>
 </html>
