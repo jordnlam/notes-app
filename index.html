@@ -24,6 +24,25 @@
                 const contentInput = document.getElementById('noteContent');
                 const saveButton = document.getElementById('saveButton');
                 const notesList = document.getElementById('notesList');
+
+                function displayNotes() {
+                        // Clear the list first
+                        notesList.innerHTML = '';
+
+                        // Loop through all notes and display each one
+                        notes.forEach(function(note) {
+                                // Create HTML for this note
+                                const noteElement = document.createElement('div');
+                                noteElement.innerHTML = `
+                                        <h3>${note.title}</h3>
+                                        <p>${note.content}</p>
+                                        <small>Created: ${new Date(note.createdAt).toLocaleString()}</small>
+                                        <hr>
+                                        `;
+                        // Add it to the page
+                        notesList.appendChild(noteElement);
+                        });
+                }
                 
                 // Listen for clicks on the save button
                 saveButton.addEventListener('click', function() {
@@ -48,6 +67,8 @@
                         // Add to our notes array
                         notes.push(note);
 
+                        displayNotes();
+
                         // Log to see if it works
                         console.log('Saved note:', note);
                         console.log('All notes:', notes);
@@ -57,7 +78,6 @@
                         contentInput.value = '';
                 });
 
-                
         </script>
 </body>
 </html>
