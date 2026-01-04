@@ -19,10 +19,6 @@
                 // Array to store notes
                 let notes = [];
 
-                // Load saved notes when page loads
-                loadFromLocalStorage();
-                displayNotes();
-
                 // Get references to HTML elements
                 const titleInput = document.getElementById('noteTitle');
                 const contentInput = document.getElementById('noteContent');
@@ -70,16 +66,12 @@
 
                         // Add to our notes array
                         notes.push(note);
-
+                        saveToLocalStorage();
                         displayNotes();
 
                         // Log to see if it works
                         console.log('Saved note:', note);
                         console.log('All notes:', notes);
-
-                        notes.push(note);
-                        saveToLocalStorage();
-                        displayNotes();
 
                         // Clear the inputs
                         titleInput.value = '';
@@ -98,6 +90,10 @@
                                 notes = JSON.parse(savedNotes);
                         }
                 }
+
+                // Load saved notes when page loads
+                loadFromLocalStorage();
+                displayNotes();
 
         </script>
 </body>
