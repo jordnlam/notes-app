@@ -77,6 +77,10 @@
                         console.log('Saved note:', note);
                         console.log('All notes:', notes);
 
+                        notes.push(note);
+                        saveToLocalStorage();
+                        displayNotes();
+
                         // Clear the inputs
                         titleInput.value = '';
                         contentInput.value = '';
