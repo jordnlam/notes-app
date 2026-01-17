@@ -5,9 +5,26 @@ const PORT = 3000;
 // Middleware to parse JSON
 app.use(express.json());
 
-// Test route
-app.get('/hello', (req, res) => {
-        res.json({message: 'Hello from the server!' });
+// In-memory storage (temporary - resets when server restarts)
+let notes = [];
+
+// GET all notes
+app.get('/notes', (req, res) => {
+        res.json(notes);
+});
+
+// POST a new note
+app.get('/notes', (req, res) => {
+        res.json(notes);
+});
+
+// POST a new note
+app.post('/notes', (req, res) => {
+        // Get note data from request
+        const note = req.body;
+        // Add to array
+        notes.push(note);
+        res.json({ message: 'Note saved!', note: note });
 });
 
 // Start server
